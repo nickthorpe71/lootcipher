@@ -26,10 +26,10 @@ function buildItem() {
   let totalScore = (1000 - conditionScore) * -1 + enchantmentScore + makerMod * 1.25 + materialMod;
 
   const category = Object.keys(data.collection)[categorySelect];
+  //const category = 'Weapon';
 
   if (category === 'Gem')
     totalScore += 300;
-  //const category = 'Weapon';
 
   const materialsLength = data.collection[category]['materials'][materialSelect].length - 1;
   const enchantmentsLength = data.collection[category]['enchantments'][enchantmentSelect].length - 1;
