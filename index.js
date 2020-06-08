@@ -10,8 +10,8 @@ function buildItem() {
 
   const conditionScore = getRandomInt(0, 1000);
   const enchantmentScore = getRandomInt(0, 1000);
-  const makerScore = getRandomInt(0, 1000);
-  const materialScore = getRandomInt(0, 1000);
+  let makerScore = getRandomInt(0, 1000);
+  let materialScore = getRandomInt(0, 1000);
 
   const categorySelect = getRandomInt(0, Object.keys(data.collection).length - 1);
 
@@ -23,13 +23,23 @@ function buildItem() {
   let makerMod = (makerScore < 500) ? 100 : makerScore;
   let materialMod = (materialScore > 900) ? materialScore * 1.5 : materialScore;
 
-  let totalScore = (1000 - conditionScore) * -1 + enchantmentScore + makerMod * 1.25 + materialMod;
-
   const category = Object.keys(data.collection)[categorySelect];
-  //const category = 'Weapon';
 
   if (category === 'Gem')
-    totalScore += 300;
+    makerScore = 1000;
+
+  if (category === 'Wine' || category === 'Painting') {
+    materialScore = 100;
+    makerMod * 1.25;
+  }
+
+
+  let totalScore = (1000 - conditionScore) * -1 + enchantmentScore + makerMod * 1.25 + materialMod;
+
+
+  //const category = 'Weapon';
+
+
 
   const materialsLength = data.collection[category]['materials'][materialSelect].length - 1;
   const enchantmentsLength = data.collection[category]['enchantments'][enchantmentSelect].length - 1;
