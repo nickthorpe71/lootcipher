@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cormorant+SC&family=Rufina&display=swap');
+
+body{
+  background-color: rgb(65, 8, 8);
+  color: rgb(167, 159, 136);
+}
+
+.content{
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.loot-section{
+  margin: 60px;
+  color: #FFEFC1;
+}
+
+img{
+  max-width: 400px;
+}
+
+button{
+  font-family: 'Cormorant SC', serif;
+  font-size: 35px;
+  padding: 10px;
+  background-color: rgb(17, 11, 11);
+  color: #FFEFC1;
+  border: 0px;
+}
+
+h1{
+  font-family: 'Cinzel', serif;
+  font-size: 50px;
+}
+
+h2{
+  font-family: 'Cormorant SC', serif;
+  font-size: 35px;
+}
+
+p{
+  font-family: 'Rufina', serif;
+  font-size: 20px;
+}
