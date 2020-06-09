@@ -236,7 +236,7 @@ export default {
         4: ['Steel'],
         5: ['Mixed Silver'],
         6: ['Silver'],
-        7: ['Saphire', 'Topaz', 'Ruby', 'Amber', 'Emerald', 'Aquamarine', 'Opal',],
+        7: ['Sapphire', 'Topaz', 'Ruby', 'Amber', 'Emerald', 'Aquamarine', 'Opal',],
         8: ['Jade', 'Moonstone'],
         9: ['Gold'],
         10: ['Diamond', 'Alexandrite']
@@ -339,10 +339,10 @@ export default {
         ''
       ],
       materials: {
-        1: ['Faded Saphire', 'Faded Topaz', 'Faded Ruby', 'Faded Amber', 'Faded Emerald', 'Faded Aquamarine', 'Faded Opal', 'Faded Amethyst'],
-        2: ['Clear Saphire', 'Clear Topaz', 'Clear Ruby', 'Clear Amber', 'Clear Emerald', 'Clear Aquamarine', 'Clear Opal', 'Clear Amethyst'],
-        3: ['Saphire', 'Topaz', 'Ruby', 'Amber', 'Emerald', 'Aquamarine', 'Opal', 'Amethyst'],
-        4: ['Pure Saphire', 'Pure Topaz', 'Pure Ruby', 'Pure Amber', 'Pure Emerald', 'Pure Aquamarine', 'Pure Opal', 'Pure Amethyst'],
+        1: ['Faded Sapphire', 'Faded Topaz', 'Faded Ruby', 'Faded Amber', 'Faded Emerald', 'Faded Aquamarine', 'Faded Opal', 'Faded Amethyst'],
+        2: ['Clear Sapphire', 'Clear Topaz', 'Clear Ruby', 'Clear Amber', 'Clear Emerald', 'Clear Aquamarine', 'Clear Opal', 'Clear Amethyst'],
+        3: ['Sapphire', 'Topaz', 'Ruby', 'Amber', 'Emerald', 'Aquamarine', 'Opal', 'Amethyst'],
+        4: ['Pure Sapphire', 'Pure Topaz', 'Pure Ruby', 'Pure Amber', 'Pure Emerald', 'Pure Aquamarine', 'Pure Opal', 'Pure Amethyst'],
         5: ['Faded Alexandrite', 'Faded Moonstone', 'Faded Jade'],
         6: ['Clear Alexandrite', 'Clear Moonstone', 'Clear Jade'],
         7: ['Alexandrite', 'Moonstone', 'Jade'],
