@@ -24,7 +24,7 @@ function buildItem() {
 
   let conditionMod = conditionScore;
   let makerMod = (makerScore < 500) ? 100 : makerScore;
-  let materialMod = (materialScore > 900) ? materialScore * 1.5 : materialScore;
+  let materialMod = (materialScore > 935) ? materialScore * 1.5 : materialScore;
 
   const category = Object.keys(data.collection)[categorySelect];
   //const category = 'Gem';
@@ -40,9 +40,8 @@ function buildItem() {
     makerMod * 1.25;
   }
 
-  let totalScore = (1000 - conditionMod) * -1 + enchantmentScore + makerMod * 1.25 + materialMod;
+  let totalScore = (1000 - conditionMod) * -1 + enchantmentScore + makerMod + materialMod;
   totalScore = (totalScore < 0) ? 0 : totalScore;
-  totalScore = (totalScore > 2000) ? totalScore * 1.25 : totalScore;
 
   const materialsLength = data.collection[category]['materials'][materialSelect].length - 1;
   const enchantmentsLength = data.collection[category]['enchantments'][enchantmentSelect].length - 1;
@@ -85,23 +84,23 @@ function generateRarity(score, mod) {
 
   if (score < 499)
     rarity = 1;
-  else if (score > 500 && score < 699)
+  else if (score >= 500 && score <= 699)
     rarity = 2;
-  else if (score > 700 && score < 799)
+  else if (score >= 700 && score <= 799)
     rarity = 3;
-  else if (score > 800 && score < 859)
+  else if (score >= 800 && score <= 859)
     rarity = 4;
-  else if (score > 860 && score < 899)
+  else if (score >= 860 && score <= 899)
     rarity = 5;
-  else if (score > 900 && score < 934)
+  else if (score >= 900 && score <= 934)
     rarity = 6;
-  else if (score > 935 && score < 969)
+  else if (score >= 935 && score <= 969)
     rarity = 7;
-  else if (score > 970 && score < 984)
+  else if (score >= 970 && score <= 984)
     rarity = 8;
-  else if (score > 985 && score < 994)
+  else if (score >= 985 && score <= 994)
     rarity = 9;
-  else if (score > 995 && score <= 1000)
+  else if (score >= 995 && score <= 1000)
     rarity = 10;
 
   rarity = (rarity < (mod / 100) * 1.6) ? rarity += 3 : rarity;
