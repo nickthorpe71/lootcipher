@@ -39,7 +39,7 @@ function buildItem() {
     makerMod * 2;
   }
 
-  let totalScore = (1000 - conditionMod) * -1 + enchantmentScore + makerMod + materialMod;
+  let totalScore = (1000 - conditionMod) * -1 + enchantmentScore + makerMod + materialMod + (enchantmentSelect * 100) + (makerSelect * 100) + (materialSelect * 100);
   totalScore = (totalScore < 0) ? 0 : totalScore;
 
   const materialsLength = data.collection[category]['materials'][materialSelect].length - 1;
