@@ -31,13 +31,12 @@ function buildItem() {
 
   if (category === 'Gem') {
     makerScore = 1000;
-    conditionMod * 2;
     materialMod * 2;
   }
 
   if (category === 'Wine' || category === 'Painting') {
-    materialScore = 100;
-    makerMod * 1.25;
+    materialMod = 0;
+    makerMod * 2;
   }
 
   let totalScore = (1000 - conditionMod) * -1 + enchantmentScore + makerMod + materialMod;

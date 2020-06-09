@@ -349,7 +349,7 @@ export default {
         7: ['Alexandrite', 'Moonstone', 'Jade'],
         8: ['Pure Alexandrite', 'Pure Moonstone', 'Pure Jade'],
         9: ['Diamond'],
-        10: ['TANZANITE', 'BLACK OPAL', 'LARIMAR', 'PARAIBA TOURMALINE', 'GRANDIDERITE', 'BENITOITE', 'PAINITE', 'RED BERYL', 'TAAFFEITE']
+        10: ['Pure TANZANITE', 'Pure BLACK OPAL', 'Pure LARIMAR', 'Pure PARAIBA TOURMALINE', 'Pure GRANDIDERITE', 'Pure BENITOITE', 'Pure PAINITE', 'Pure RED BERYL', 'Pure TAAFFEITE']
       },
       conditions: {
         1: ['Chipped'],
@@ -369,7 +369,7 @@ export default {
         3: ['Sacred', 'Haunted'],
         4: ['Lucky'],
         5: ['Haunted'],
-        6: ['Shadowy', 'Pure'],
+        6: ['Shadowy'],
         7: ['Fiery', 'Hexed', 'Cursed'],
         8: ['Legendary'],
         9: ['Hallowed'],
@@ -436,7 +436,7 @@ export default {
         5: ['Eric Arnold', 'Alberto Antonini', 'John Adlum'],
         6: ['Franco Biondi Santi', 'Jacques Berthomeau', 'Heidi Peterson Barrett'],
         7: ['Casa Madero, Parras de la Fuente, Mexico – established 1568'],
-        8: ['Casa Madero, Parras de la Fuente, Mexico – established 1568', 'Rustenberg, Stellenbosch, South Africa – established 1682', 'Boschendal Winery, Franschhoek, South Africa – established 1688'],
+        8: ['Rustenberg, Stellenbosch, South Africa – established 1682', 'Boschendal Winery, Franschhoek, South Africa – established 1688'],
         9: ['Barone Ricasoli, Tuscany, Italy – established 1141', 'Schloss Vollrads, Rheingau, Germany – established 1211'],
         10: ['Schloss Johanisberg, Germany – circa 1100']
       }
