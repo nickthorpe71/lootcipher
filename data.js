@@ -9,7 +9,8 @@ export default {
         'Statue of a Bear',
         'Statue of a Bird',
         'Statue of an Elephant',
-        'Figurine'
+        'Figurine',
+        'Abstract Sculpture'
       ],
       materials: {
         1: ['Wood', 'Clay'],
@@ -56,9 +57,9 @@ export default {
         5: ['Eva Hesse'],
         6: ['Teresa Feoderovna Ries'],
         7: ['Louise Bourgeois'],
-        8: ['Sol LeWitt'],
-        9: ['Constantin Brancusi'],
-        10: ['Michelangelo']
+        8: ['Sol LeWitt', 'Alberto Giacometti', 'Henry Moore'],
+        9: ['Constantin Brancusi', 'Auguste Rodin'],
+        10: ['Michelangelo', 'Praxiteles', 'Donatello', 'Gianlorenzo Bernini']
       }
     },
     Armor: {                //armor
