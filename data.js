@@ -2,13 +2,13 @@ export default {
   collection: {
     Sculpture: {                 //sculpture
       subCategories: [
-        'Statue of a man',
-        'Statue of a woman',
-        'Statue of a person',
-        'Statue of a wolf',
-        'Statue of a bear',
-        'Statue of a bird',
-        'Statue of a elephant',
+        'Statue of a Man',
+        'Statue of a Woman',
+        'Statue of a Person',
+        'Statue of a Wolf',
+        'Statue of a Bear',
+        'Statue of a Bird',
+        'Statue of an Elephant',
         'Figurine'
       ],
       materials: {
@@ -21,7 +21,7 @@ export default {
         7: ['Silver'],
         8: ['Jade'],
         9: ['Gold'],
-        10: ['Gold']
+        10: ['Ancient Gold']
       },
       conditions: {
         1: ['Crumbling'],
@@ -232,9 +232,9 @@ export default {
       materials: {
         1: ['Iron'],
         2: ['Bronze'],
-        3: ['Steel'],
+        3: ['Mixed Steel'],
         4: ['Steel'],
-        5: ['Silver'],
+        5: ['Mixed Silver'],
         6: ['Silver'],
         7: ['Saphire', 'Topaz', 'Ruby', 'Amber', 'Emerald', 'Aquamarine', 'Opal',],
         8: ['Jade', 'Moonstone'],

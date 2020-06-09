@@ -8,14 +8,14 @@ function onButtonClick() {
 
 function buildItem() {
 
-  const conditionScore = getRandomInt(0, 1000);
-  const enchantmentScore = getRandomInt(0, 1000);
-  let makerScore = getRandomInt(0, 1000);
-  let materialScore = getRandomInt(0, 1000);
+  const rarityModifier = generateRarityModifier();
+
+  const conditionScore = generateScore(rarityModifier);
+  const enchantmentScore = generateScore(rarityModifier);
+  let makerScore = generateScore(rarityModifier);
+  let materialScore = generateScore(rarityModifier);
 
   const categorySelect = getRandomInt(0, Object.keys(data.collection).length - 1);
-
-  const rarityModifier = generateRarityModifier();
 
   const conditionSelect = generateRarity(conditionScore, rarityModifier);
   const enchantmentSelect = generateRarity(enchantmentScore, rarityModifier);
@@ -32,6 +32,7 @@ function buildItem() {
   if (category === 'Gem') {
     makerScore = 1000;
     conditionMod * 2;
+    materialMod * 2;
   }
 
   if (category === 'Wine' || category === 'Painting') {
@@ -39,7 +40,9 @@ function buildItem() {
     makerMod * 1.25;
   }
 
-  let totalScore = (1000 - conditionMod) * -1 + enchantmentScore + makerMod * 1.25 + materialMod + 500;
+  let totalScore = (1000 - conditionMod) * -1 + enchantmentScore + makerMod * 1.25 + materialMod;
+  totalScore = (totalScore < 0) ? 0 : totalScore;
+  totalScore = (totalScore > 2000) ? totalScore * 1.25 : totalScore;
 
   const materialsLength = data.collection[category]['materials'][materialSelect].length - 1;
   const enchantmentsLength = data.collection[category]['enchantments'][enchantmentSelect].length - 1;
@@ -67,31 +70,41 @@ function lootTemplate(itemName, enchantment, material, category, maker, conditio
   `;
 }
 
+function generateScore(mod) {
+  let score = getRandomInt(0, 1000);
+  score += mod;
+
+  score = (score < mod * 1.5) ? score + mod + 300 : score;
+  score = (score > 1000) ? 1000 : score;
+
+  return score;
+}
+
 function generateRarity(score, mod) {
-  let rarity = 0;
+  let rarity = 1;
 
   if (score < 499)
     rarity = 1;
-  if (score > 500 && score < 699)
+  else if (score > 500 && score < 699)
     rarity = 2;
-  if (score > 700 && score < 799)
+  else if (score > 700 && score < 799)
     rarity = 3;
-  if (score > 800 && score < 859)
+  else if (score > 800 && score < 859)
     rarity = 4;
-  if (score > 860 && score < 899)
+  else if (score > 860 && score < 899)
     rarity = 5;
-  if (score > 900 && score < 934)
+  else if (score > 900 && score < 934)
     rarity = 6;
-  if (score > 935 && score < 969)
+  else if (score > 935 && score < 969)
     rarity = 7;
-  if (score > 970 && score < 984)
+  else if (score > 970 && score < 984)
     rarity = 8;
-  if (score > 985 && score < 994)
+  else if (score > 985 && score < 994)
     rarity = 9;
-  if (score > 995 && score < 100)
+  else if (score > 995 && score <= 1000)
     rarity = 10;
 
-  rarity += mod;
+  rarity = (rarity < (mod / 100) * 1.6) ? rarity += 3 : rarity;
   rarity = (rarity > 10) ? 10 : rarity;
 
   return rarity;
@@ -100,10 +113,10 @@ function generateRarity(score, mod) {
 function generateRarityModifier() {
   const seed = getRandomInt(0, 1000);
   let mod =
-    (seed < 499) ? 0 :
-      (seed > 500 && seed < 799) ? 1 :
-        (seed > 800 && seed < 949) ? 2 :
-          (seed > 950 && seed < 984) ? 3 : 4;
+    (seed < 899) ? 0 :
+      (seed > 900 && seed < 939) ? 100 :
+        (seed > 940 && seed < 969) ? 200 :
+          (seed > 970 && seed < 989) ? 300 : 400;
 
   return mod;
 }
