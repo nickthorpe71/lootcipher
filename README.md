@@ -1,1 +1,3 @@
 # lootcipher
+
+new readme
