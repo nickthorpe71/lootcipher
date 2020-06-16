@@ -1,8 +1,10 @@
 import data from './data.js';
+import api from './api.js';
 
 function onButtonClick() {
   $('button').click(function () {
-    $('.loot-section').html(buildItem());
+    // $('.loot-section').html(buildItem());
+    console.log(api.getItems('sword', '1'));
   });
 }
 
