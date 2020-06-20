@@ -3,8 +3,35 @@ import api from './api.js';
 
 function onButtonClick() {
   $('button').click(function () {
-    // $('.loot-section').html(buildItem());
-    console.log(api.getItems('sword', '1'));
+    //$('.loot-section').html(buildItem());
+    let results = [];
+
+    //useful properties: 
+    //url, 
+    //title, 
+    //description, 
+    //who_made, 
+    //when_made, 
+    //materials, < an array of materials
+    //price,
+    //tags, < another array of keywords
+    //taxonomy_path[] < basically an array of key words
+
+    api.getItems('Statue of a Bird', '40')
+      .then((items) => {
+        results = items;
+
+        console.log(results[Math.floor(Math.random() * 40)]);
+      });
+
+    //call chooseItemType to set search term
+    //use api.getItems to get a list of 40 items
+    //choose one randomly
+    //feed that info into buildItem
+    ////build item should return an image and text below it
+    //render the item on the screen
+
+
   });
 }
 
