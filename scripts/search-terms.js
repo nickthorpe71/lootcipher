@@ -29,10 +29,13 @@ export default {
     Armor: {                //armor
       subCategories: [
         'antique armor',
+        'fantasy armor',
         'antique shield',
-        'Chain Mail',
+        'cosplay armor',
+        'cosplay mask',
+        'Chainmail',
         'Plate Armor',
-        'Gauntlets',
+        'plate gauntlets',
         'Greaves',
         'samurai armor',
         'knights armor',
@@ -53,6 +56,15 @@ export default {
     },                //weapon
     Weapon: {
       subCategories: [
+        'cosplay weapon',
+        'cosplay sword',
+        'cosplay axe',
+        'cosplay hammer',
+        'cosplay spear',
+        'cosplay bow',
+        'cosplay quiver',
+        'cosplay gun',
+        'fantasy weapon',
         'sword',
         'axe',
         'spear',
@@ -68,16 +80,16 @@ export default {
         'Composite bow',
       ],
       materials: {
-        1: ['Iron'],
-        2: ['Wooden'],
-        3: ['Bronze'],
-        4: ['Steel'],
-        5: ['Silver'],
-        6: ['Silver'],
-        7: ['Jade'],
-        8: ['Jade'],
-        9: ['Gold'],
-        10: ['platinum']
+        1: [''],
+        2: [''],
+        3: [''],
+        4: [''],
+        5: [''],
+        6: [''],
+        7: [''],
+        8: [''],
+        9: [''],
+        10: ['']
       }
     },
     Jewelry: {
@@ -128,19 +140,31 @@ export default {
     },
     Gem: {
       subCategories: [
-        ''
+        'Sapphire',
+        'Topaz',
+        'Ruby',
+        'Amber',
+        'Emerald',
+        'Aquamarine',
+        'Opal',
+        'Jade',
+        'Moonstone',
+        'Diamond',
+        'Alexandrite',
+        'TANZANITE',
+        'BLACK OPAL'
       ],
       materials: {
-        1: ['Faded Sapphire', 'Faded Topaz', 'Faded Ruby', 'Faded Amber', 'Faded Emerald', 'Faded Aquamarine', 'Faded Opal', 'Faded Amethyst'],
-        2: ['Clear Sapphire', 'Clear Topaz', 'Clear Ruby', 'Clear Amber', 'Clear Emerald', 'Clear Aquamarine', 'Clear Opal', 'Clear Amethyst'],
-        3: ['Sapphire', 'Topaz', 'Ruby', 'Amber', 'Emerald', 'Aquamarine', 'Opal', 'Amethyst'],
-        4: ['Pure Sapphire', 'Pure Topaz', 'Pure Ruby', 'Pure Amber', 'Pure Emerald', 'Pure Aquamarine', 'Pure Opal', 'Pure Amethyst'],
-        5: ['Faded Alexandrite', 'Faded Moonstone', 'Faded Jade'],
-        6: ['Clear Alexandrite', 'Clear Moonstone', 'Clear Jade'],
-        7: ['Alexandrite', 'Moonstone', 'Jade'],
-        8: ['Pure Alexandrite', 'Pure Moonstone', 'Pure Jade'],
-        9: ['Diamond'],
-        10: ['Pure TANZANITE', 'Pure BLACK OPAL', 'Pure LARIMAR', 'Pure PARAIBA TOURMALINE', 'Pure GRANDIDERITE', 'Pure BENITOITE', 'Pure PAINITE', 'Pure RED BERYL', 'Pure TAAFFEITE']
+        1: [''],
+        2: [''],
+        3: [''],
+        4: [''],
+        5: [''],
+        6: [''],
+        7: [''],
+        8: [''],
+        9: [''],
+        10: ['']
       }
     },
     Wine: {
@@ -165,8 +189,12 @@ export default {
       subCategories: [
         'antique ukulele',
         'antique guitar',
+        'antique flute',
+        'antique ocarina',
         'antique drum',
         'antique instrument',
+        'lotr',
+        'antique pipe'
       ],
       materials: {
         1: [''],
@@ -185,7 +213,11 @@ export default {
       subCategories: [
         'antique goblet',
         'antique',
-        'artifact'
+        'artifact',
+        'voodoo doll',
+        'antique key',
+        'antique mask'
+
       ],
       materials: {
         1: [''],

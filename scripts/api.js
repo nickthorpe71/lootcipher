@@ -24,7 +24,7 @@ function buildUrl(keyWordList) {
   const apiKey = 'api_key=mrbs8unvfytnn60kudfot6re'
   const keyWords = `keywords=${keyWordList}`;
   const limit = `limit=${40}`;
-  const minPrice = `min_price=${10}`;
+  const minPrice = `min_price=${70}`;
 
   const url =
     `${baseUrl}${apiKey}&${keyWords}&${limit}&${minPrice}`;

@@ -40,10 +40,9 @@ function chooseItemQuery() {
 
   let category = Object.keys(searchTerms.collection)[categorySelect];
   if (category != 'Weapons' || category != 'Armor') {
-    const roll = Math.random() * 12;
-    category = roll <= 4 ? 'Weapon' :
-      roll >= 11 ? 'Jewelry' :
-        roll >= 6 ? 'Armor' : category
+    const roll = Math.random() * 19;
+    category = roll <= 8 ? 'Weapon' :
+      roll >= 10 ? 'Armor' : category
   }
 
   const materialsLength = searchTerms.collection[category]['materials'][materialSelect].length - 1;
@@ -72,7 +71,7 @@ function buildItem(item) {
   //the replace and split combo is cutting the string off at the first '\s'(space) after 30 characters
   let itemName = item.title.replace(/.{25}\S*\s+/g, "$&@").split(/\s+@/)[0];
   itemName = titleCase(itemName);
-  itemName = itemName.replace(/Ethnic|For|Free|By/gi, "")
+  itemName = itemName.replace(/Ethnic|For|Free|By|,|And|With/gi, "")
 
   //determine materials
   let materials = '';
