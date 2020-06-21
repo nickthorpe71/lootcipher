@@ -1,100 +1,157 @@
-import data from './data.js';
+import searchTerms from './search-terms.js';
 import api from './api.js';
 
 function onButtonClick() {
-  $('button').click(function () {
-    //$('.loot-section').html(buildItem());
-    let results = [];
+  $('.loot-section').on('click', '.js-open-button', function () {
+    const itemQuery = chooseItemQuery();
+    console.log(`Item query: ${itemQuery}`);
 
-    //useful properties: 
-    //url, 
-    //title, 
-    //description, 
-    //who_made, 
-    //when_made, 
-    //materials, < an array of materials
-    //price,
-    //tags, < another array of keywords
-    //taxonomy_path[] < basically an array of key words
-
-    api.getItems('Statue of a Bird', '40')
+    //start animation and remove open button
+    render(loadingTemplate());
+    api.getItems(itemQuery)//use api to get a list of 40 items
       .then((items) => {
-        results = items;
+        let tempItems = items;
 
-        console.log(results[Math.floor(Math.random() * 40)]);
+        const vintageItems = tempItems.filter(item => item.is_vintage === true)
+
+        let item = {};
+        if (vintageItems.length > 0) {
+          item = vintageItems[Math.floor(Math.random() * vintageItems.length)];
+        } else {
+          item = items[Math.floor(Math.random() * items.length)];
+        }
+
+        buildItem(item); //build html including item stats and image
+        //stop animation and display open button
       });
-
-    //call chooseItemType to set search term
-    //use api.getItems to get a list of 40 items
-    //choose one randomly
-    //feed that info into buildItem
-    ////build item should return an image and text below it
-    //render the item on the screen
-
-
   });
 }
 
-function buildItem() {
+//need ot build in that if the search comes back empty it researches
 
+function chooseItemQuery() {
   const rarityModifier = generateRarityModifier();
-
-  const conditionScore = generateScore(rarityModifier);
-  const enchantmentScore = generateScore(rarityModifier);
-  let makerScore = generateScore(rarityModifier);
   let materialScore = generateScore(rarityModifier);
 
-  const categorySelect = getRandomInt(0, Object.keys(data.collection).length - 1);
-
-  const conditionSelect = generateRarity(conditionScore, rarityModifier);
-  const enchantmentSelect = generateRarity(enchantmentScore, rarityModifier);
-  const makerSelect = generateRarity(makerScore, rarityModifier);
+  const categorySelect = getRandomInt(0, Object.keys(searchTerms.collection).length - 1);
   const materialSelect = generateRarity(materialScore, rarityModifier);
 
-  let conditionMod = conditionScore;
-  let makerMod = (makerScore < 500) ? 100 : makerScore;
-  let materialMod = (materialScore > 935) ? materialScore * 1.5 : materialScore;
+  let category = Object.keys(searchTerms.collection)[categorySelect];
+  if (category != 'Weapons' || category != 'Armor') {
+    const roll = Math.random() * 5;
 
-  const category = Object.keys(data.collection)[categorySelect];
-  //const category = 'Gem';
-
-  if (category === 'Gem') {
-    makerScore = 1000;
-    materialMod * 2;
+    category = roll <= 1 ? 'Weapons' :
+      roll >= 3 ? 'Armor' : category
   }
 
-  if (category === 'Wine' || category === 'Painting') {
-    materialMod = 0;
-    makerMod * 2;
-  }
+  const materialsLength = searchTerms.collection[category]['materials'][materialSelect].length - 1;
+  const subcategoriesLength = searchTerms.collection[category]['subCategories'].length - 1;
 
-  let totalScore = (1000 - conditionMod) * -1 + enchantmentScore + makerMod + materialMod + (enchantmentSelect * 100) + (makerSelect * 100) + (materialSelect * 100);
-  totalScore = (totalScore < 0) ? 0 : totalScore;
+  const itemName = searchTerms.collection[category]['subCategories'][getRandomInt(0, subcategoriesLength)];
+  const material = searchTerms.collection[category]['materials'][materialSelect][getRandomInt(0, materialsLength)];
 
-  const materialsLength = data.collection[category]['materials'][materialSelect].length - 1;
-  const enchantmentsLength = data.collection[category]['enchantments'][enchantmentSelect].length - 1;
-  const makersLength = data.collection[category]['makers'][makerSelect].length - 1;
-  const conditionsLength = data.collection[category]['conditions'][conditionSelect].length - 1;
-  const subcategoriesLength = data.collection[category]['subCategories'].length - 1;
-
-  const itemName = data.collection[category]['subCategories'][getRandomInt(0, subcategoriesLength)];
-  const material = data.collection[category]['materials'][materialSelect][getRandomInt(0, materialsLength)];
-  const enchantment = data.collection[category]['enchantments'][enchantmentSelect][getRandomInt(0, enchantmentsLength)];
-  const maker = data.collection[category]['makers'][makerSelect][getRandomInt(0, makersLength)];
-  const condition = data.collection[category]['conditions'][conditionSelect][getRandomInt(0, conditionsLength)];
-
-  return lootTemplate(itemName, enchantment, material, category, maker, condition, totalScore);
+  return `${itemName} ${material}`
 }
 
-function lootTemplate(itemName, enchantment, material, category, maker, condition, score) {
+function titleCase(str) {
+  var splitStr = str.toLowerCase().split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+    // You do not need to check if i is larger than splitStr length, as your for does that for you
+    // Assign it back to the array
+    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  }
+  // Directly return the joined string
+  return splitStr.join(' ');
+}
+
+function buildItem(item) {
+
+  //determine itemName
+  //the replace and split combo is cutting the string off at the first '\s'(space) after 30 characters
+  let itemName = item.title.replace(/.{25}\S*\s+/g, "$&@").split(/\s+@/)[0];
+  itemName = titleCase(itemName);
+  itemName = itemName.replace(/Ethnic|For|Free|By/gi, "")
+
+  //determine materials
+  let materials = '';
+  if (item.materials.length == 0) {
+    materials = 'N/A';
+  } else if (item.materials.length == 1) {
+    materials = item.materials[0];
+  } else {
+    materials = item.materials.join(", ");
+  }
+
+  materials = materials.replace(/.{100}\S*\s+/g, "$&@").split(/\s+@/)[0];
+
+  //determine category
+  const category = item.taxonomy_path[item.taxonomy_path.length - 1];
+  //determine url
+  const url = item.url;
+  //determine score
+  let score = Math.ceil((item.price / 10) * (item.price / 10));
+
+  //determine description
+  //need to make the description cut off at the period after 200 chars
+  let description = item.description.replace(/.{100}\S*\s+/g, "$&@").split(/\s+@/)[0];
+  description = description.replace(/Ethnic|For|Free|By|Shipping/gi, "")
+
+  console.log(item);
+  console.log(item.listing_id);
+
+  api.getImage(item.listing_id) //determine image
+    .then((img) => {
+      display(img, itemName, category, materials, score, description, url);
+    });
+}
+
+function render(content) {
+  $('.loot-section').html(content);
+}
+
+function loadInitialView() {
+  render(initialViewTemplate());
+}
+
+function display(image, itemName, category, materials, score, description, url) {
+  const itemHtml = itemTemplate(image, itemName, category, materials, score, description, url)
+  render(itemHtml);
+}
+
+//add 'of ${suffix}' to the end of You found line
+function itemTemplate(image, itemName, category, materials, score, description, url) {
+  //potentially add Description: <br> ${description} <br> back in after figuring out how to format
+  //or write a description using key words
+
   return `
-    <p>You found ${enchantment} ${material} ${itemName} <br>
+    <img src="${image}" alt="${itemName}"><br>
+    <p>You found ${itemName} <br><br>
       Category: ${category} <br>
-      Maker: ${maker} <br>
-      Condition: ${condition} <br>
+      Materials: ${materials}  <br>
       Overall Rating: ${score} <br>
     </p>
+    <form action="${url}" target="_blank">
+      <input class="button-style" type="submit" value="More Info" />
+    </form>
+    <div>
+      <button class="button-style js-open-button" type="button">Open Another</button>
+    </div>
   `;
+}
+
+function initialViewTemplate() {
+  return `
+    <div>
+      <img src="https://pngimg.com/uploads/treasure_chest/treasure_chest_PNG76.png" alt="Chest Pic">
+    </div>
+    <div>
+      <button class="button-style js-open-button" type="button">Open</button>
+    </div>
+  `;
+}
+
+function loadingTemplate() {
+  return '<p>Opening...</p>'
 }
 
 function generateScore(mod) {
@@ -156,6 +213,7 @@ function getRandomInt(min, max) {
 
 function pageHandler() {
   onButtonClick();
+  loadInitialView();
 }
 
 export default {

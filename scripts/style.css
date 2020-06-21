@@ -2,7 +2,7 @@
 
 body{
   background-color: rgb(65, 8, 8);
-  color: rgb(167, 159, 136);
+  color: #FFEFC1;
 }
 
 .content{
@@ -17,16 +17,19 @@ body{
 }
 
 img{
-  max-width: 400px;
+  max-width: 30vw;
+  max-height: 30vh;
+  border-radius: 10%;
 }
 
-button{
+.button-style{
   font-family: 'Cormorant SC', serif;
   font-size: 35px;
   padding: 10px;
   background-color: rgb(17, 11, 11);
   color: #FFEFC1;
   border: 0px;
+  margin: 10px;
 }
 
 h1{

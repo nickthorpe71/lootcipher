@@ -1,10 +1,21 @@
 
+function getImage(listingId) {
+  return fetch(`https://openapi.etsy.com/v2/listings/${listingId}/images?api_key=mrbs8unvfytnn60kudfot6re`, {
+    headers: { 'Origin': 'X-Requested-With' }
+  })
+    .then(res => res.json())
+    .then(data => data.results[0].url_fullxfull)
+}
+
 function getItems(query, maxEntries) {
   return fetch(buildUrl(query, maxEntries), {
     headers: { 'Origin': 'X-Requested-With' }
   })
     .then(res => res.json())
-    .then(data => data.results)
+    .then(data => {
+      console.log(data);
+      return data.results;
+    });
 }
 
 function buildUrl(keyWordList) {
@@ -13,7 +24,7 @@ function buildUrl(keyWordList) {
   const apiKey = 'api_key=mrbs8unvfytnn60kudfot6re'
   const keyWords = `keywords=${keyWordList}`;
   const limit = `limit=${40}`;
-  const minPrice = `min_price=${30}`;
+  const minPrice = `min_price=${50}`;
 
   const url =
     `${baseUrl}${apiKey}&${keyWords}&${limit}&${minPrice}`;
@@ -22,5 +33,6 @@ function buildUrl(keyWordList) {
 }
 
 export default {
-  getItems
+  getItems,
+  getImage
 };
