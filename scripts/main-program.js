@@ -10,16 +10,18 @@ function onButtonClick() {
     render(loadingTemplate());
     api.getItems(itemQuery)//use api to get a list of 40 items
       .then((items) => {
-        let tempItems = items;
+        // let tempItems = items;
 
-        const vintageItems = tempItems.filter(item => item.is_vintage === true)
+        // const vintageItems = tempItems.filter(item => item.is_vintage === true)
 
-        let item = {};
-        if (vintageItems.length > 0) {
-          item = vintageItems[Math.floor(Math.random() * vintageItems.length)];
-        } else {
-          item = items[Math.floor(Math.random() * items.length)];
-        }
+        // let item = {};
+        // if (vintageItems.length > 0) {
+        //   item = vintageItems[Math.floor(Math.random() * vintageItems.length)];
+        // } else {
+        //   item = items[Math.floor(Math.random() * items.length)];
+        // }
+
+        const item = items[Math.floor(Math.random() * items.length)];
 
         buildItem(item); //build html including item stats and image
         //stop animation and display open button
@@ -38,10 +40,10 @@ function chooseItemQuery() {
 
   let category = Object.keys(searchTerms.collection)[categorySelect];
   if (category != 'Weapons' || category != 'Armor') {
-    const roll = Math.random() * 5;
-
-    category = roll <= 1 ? 'Weapons' :
-      roll >= 3 ? 'Armor' : category
+    const roll = Math.random() * 12;
+    category = roll <= 4 ? 'Weapon' :
+      roll >= 11 ? 'Jewelry' :
+        roll >= 6 ? 'Armor' : category
   }
 
   const materialsLength = searchTerms.collection[category]['materials'][materialSelect].length - 1;

@@ -12,7 +12,6 @@ export default {
         'Statue of an Elephant',
         'Statue of an animal',
         'Figurine',
-        'Abstract Sculpture'
       ],
       materials: {
         1: ['Wood', 'Clay'],
@@ -31,29 +30,25 @@ export default {
       subCategories: [
         'antique armor',
         'antique shield',
-        'shield',
-        'Breast Plate',
         'Chain Mail',
         'Plate Armor',
-        'real Crown',
         'Gauntlets',
         'Greaves',
         'samurai armor',
         'knights armor',
-        'spartan armor',
         'viking helm'
       ],
       materials: {
-        1: ['Iron'],
-        2: ['Iron'],
-        3: ['Bronze'],
-        4: ['Steel'],
-        5: ['Silver'],
-        6: ['Silver'],
-        7: ['metal'],
-        8: ['metal'],
-        9: ['Gold'],
-        10: ['Platinum']
+        1: [''],
+        2: [''],
+        3: [''],
+        4: [''],
+        5: [''],
+        6: [''],
+        7: [''],
+        8: [''],
+        9: [''],
+        10: ['']
       }
     },                //weapon
     Weapon: {
@@ -66,15 +61,9 @@ export default {
         'Scimitar',
         'Katana',
         'Rapier',
-        'Dirk',
-        'Jambiya',
         'dagger',
-        'Maul',
         'Longbow',
-        'Flatbow',
         'Katar',
-        'Zweihänder',
-        'Claymore',
         'Recurve bow',
         'Composite bow',
       ],
@@ -94,14 +83,13 @@ export default {
     Jewelry: {
       subCategories: [
         'antique jewelery',
-        'antique Earrings',
-        'antique Hairpin',
-        'antique Necklace',
-        'antique Pendant',
-        'antique Bangle',
-        'antique Bracelet',
-        'antique Ring',
-        'antique Amulet'
+        'Earrings',
+        'Necklace',
+        'Pendant',
+        'Bangle',
+        'Bracelet',
+        'Ring',
+        'Amulet'
       ],
       materials: {
         1: ['Iron'],
@@ -157,7 +145,8 @@ export default {
     },
     Wine: {
       subCategories: [
-        'antique wine'
+        'antique wine',
+        'wine bottle'
       ],
       materials: {
         1: [''],
